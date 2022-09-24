@@ -1,0 +1,26 @@
+*
+
+####################### Whitelist #######################
+
+!.gitignore
+!kitty
+!kitty/*
+!tmux
+!tmux/**/*
+!nvim
+!nvim/**/*
+!karabiner
+!karabiner/**/*
+!starship.toml
+
+####################### Blacklist #######################
+
+# Nvim
+/nvim/plugin
+
+# Tmux
+/tmux/plugins
+/tmux/resurrect
+
+.DS_Store
+

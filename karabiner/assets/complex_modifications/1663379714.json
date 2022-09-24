@@ -1,0 +1,1 @@
+{"title":"Caps Lock to Ctrl (Escape if alone)","rules":[{"description":"Caps Lock to Ctrl (Escape if alone)","manipulators":[{"from":{"key_code":"caps_lock"},"to":[{"key_code":"left_control","modifiers":[]}],"to_if_alone":[{"key_code":"escape"}],"type":"basic"}]}]}
