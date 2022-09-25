@@ -44,6 +44,6 @@ nnoremap('=', '=<cr>')
 
 -- Neotree
 nnoremap('<leader>et', '<cmd>:Neotree toggle<cr>')
-nnoremap('<leader>ef', '<cmd>:Neotree filesystem right reveal<cr>')
-nnoremap('<leader>eg', '<cmd>:Neotree git_status right reveal<cr>')
-nnoremap('<leader>eb', '<cmd>:Neotree buffers right reveal<cr>')
+nnoremap('<leader>ef', '<cmd>:Neotree filesystem right reveal action=show<cr>')
+nnoremap('<leader>eg', '<cmd>:Neotree git_status right reveal action=show<cr>')
+nnoremap('<leader>eb', '<cmd>:Neotree buffers right reveal action=show<cr>')

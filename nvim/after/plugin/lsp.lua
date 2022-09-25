@@ -1,3 +1,7 @@
+-- Mason
+require("mason").setup()
+require("mason-lspconfig").setup()
+
 local opts = { noremap=true, silent=true }
 vim.keymap.set('n', '<space>i', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '<leader>dp', vim.diagnostic.goto_prev, opts)

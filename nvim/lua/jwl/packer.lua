@@ -7,6 +7,12 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
+    -- LSP, Linter, Formatter, DAP Manager
+    use {
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim"
+    }
+
     -- LSP / Completion
     use 'neovim/nvim-lspconfig'
     use 'hrsh7th/cmp-nvim-lsp'
@@ -58,6 +64,7 @@ return require('packer').startup(function(use)
     -- Git
     use 'lewis6991/gitsigns.nvim'
     use 'kdheepak/lazygit.nvim'
+    use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
     -- Neo Tree
     -- Unless you are still migrating, remove the deprecated commands from v1.x
