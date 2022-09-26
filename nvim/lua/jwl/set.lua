@@ -23,4 +23,5 @@ vim.opt.hidden = true
 vim.g.mapleader = " "
 vim.opt.timeoutlen = 500
 
+-- Colors
 vim.opt.termguicolors = true

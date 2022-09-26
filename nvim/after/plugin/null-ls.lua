@@ -11,11 +11,14 @@ null_ls.setup({
                 return diagnostic.code ~= "prettier/prettier"
             end,
         }),
+        b.diagnostics.cspell,
+        b.diagnostics.write_good,
 
+        -- Formatting
         b.formatting.prettierd.with({
             prefer_local = true
-        })
-        -- null_ls.builtins.completion.spell,
-        -- null_ls.builtins.formatting.stylua,
+        }),
+        b.formatting.stylua,
+        b.formatting.yamlfmt,
     },
 })
