@@ -1,5 +1,6 @@
 local nnoremap = require('jwl.keymap').nnoremap
 local inoremap = require('jwl.keymap').inoremap
+local vnoremap = require('jwl.keymap').vnoremap
 
 -- reload neovim config
 nnoremap('<leader>sv', '<cmd>source $MYVIMRC<CR>')
@@ -7,6 +8,7 @@ nnoremap('<leader>sv', '<cmd>source $MYVIMRC<CR>')
 -- telescope
 nnoremap('<leader>fe', '<cmd>Ex<cr>')
 nnoremap('<leader>fp', "<cmd>lua require('telescope.builtin').find_files()<cr>")
+nnoremap('<C-p>', "<cmd>lua require('telescope.builtin').find_files()<cr>")
 nnoremap('<leader>fg', '<cmd>Telescope live_grep<cr>')
 nnoremap('<leader>fb', '<cmd>Telescope buffers<cr>')
 nnoremap('<leader>fh', '<cmd>Telescope help_tags<cr>')
@@ -22,12 +24,7 @@ inoremap('<C-s>', '<esc>:w<cr>')
 -- Escape
 inoremap('jj', '<esc>')
 inoremap('kk', '<esc>')
-
--- Movement Normal
-nnoremap('<C-j>', '<C-d>M')
-nnoremap('<C-k>', '<C-u>M')
-nnoremap('<C-h>', '^')
-nnoremap('<C-l>', '$')
+inoremap('hh', '<esc>')
 
 -- Movement Insert
 inoremap('<C-h>', '<Left>')
@@ -42,8 +39,15 @@ nnoremap('<leader><cr>', 'O<esc>')
 -- Formatting
 nnoremap('=', '=<cr>')
 
+-- Move lines
+vnoremap("K", ":m '<-2<CR>gv=gv")
+vnoremap("J", ":m '>+1<CR>gv=gv")
+
 -- Neotree
+-- Closing Neotree and reopening allows for the buffer to be refreshed and 
+-- reset its correct position.
+local close_neotree = '<cmd>:Neotree close<cr>'
 nnoremap('<leader>et', '<cmd>:Neotree toggle<cr>')
-nnoremap('<leader>ef', '<cmd>:Neotree filesystem right reveal action=show<cr>')
-nnoremap('<leader>eg', '<cmd>:Neotree git_status right reveal action=show<cr>')
-nnoremap('<leader>eb', '<cmd>:Neotree buffers right reveal action=show<cr>')
+nnoremap('<leader>ef', close_neotree .. '<cmd>:Neotree filesystem right reveal action=show<cr>')
+nnoremap('<leader>eg', close_neotree .. '<cmd>:Neotree git_status right reveal action=show<cr>')
+nnoremap('<leader>eb', close_neotree .. '<cmd>:Neotree buffers right reveal action=show<cr>')
