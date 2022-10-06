@@ -1,2 +1,4 @@
-require('jwl.set')
-require('jwl.remap')
+require("jwl.set")
+require("jwl.remap")
+
+print("hello from jwl")
