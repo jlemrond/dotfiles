@@ -2289,10 +2289,10 @@ select_fg            #CDD6F4
 
 # }}}
 
-# : My Settings {{{
+# MY SETTINGS
 
 # -- Background
-background_opacity 0.95
+# background_opacity 0.95
 dynamic_background_opacity yes
 
 # -- Fonts
@@ -2311,11 +2311,11 @@ hide_window_decorations titlebar-only
 # -- Keymaps
 map alt+s send_text all \x13
 map cmd+s send_text all \x13
-# }}}
 
 
+# AUTO GENERATED SETTINGS
 
 # BEGIN_KITTY_THEME
-# Tokyo Night
+# Gruvbox Light Hard
 include current-theme.conf
 # END_KITTY_THEME

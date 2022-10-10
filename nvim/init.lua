@@ -1,3 +1,2 @@
-require('jwl')
+require("jwl")
 print("hello from nvim")
-

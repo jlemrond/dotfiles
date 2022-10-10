@@ -5,6 +5,14 @@ require("catppuccin").setup({
 	dim_inactive = {
 		enable = true,
 	},
+	integrations = {
+		telescope = true,
+		neotree = true,
+		harpoon = true,
+		cmp = true,
+		gitsigns = true,
+		treesitter = true,
+	},
 })
 
 vim.opt.background = "dark"
@@ -18,11 +26,17 @@ require("tokyonight").setup({
 		sidebars = "transparent",
 	},
 	hide_inactive_statusline = true,
-	transparent = true,
+	transparent = false,
 })
 
+-- Kanagawa
 require("kanagawa").setup({
-	transparent = true,
+	transparent = false,
+})
+
+-- Rose Pine
+require("rose-pine").setup({
+	dark_variant = "moon",
 })
 
 vim.cmd("colorscheme catppuccin")

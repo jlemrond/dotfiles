@@ -53,9 +53,9 @@ vnoremap("J", ":m '>+1<CR>gv=gv")
 -- reset its correct position.
 local close_neotree = "<cmd>:Neotree close<cr>"
 nnoremap("<leader>ee", "<cmd>:Neotree toggle<cr>")
-nnoremap("<leader>ef", close_neotree .. "<cmd>:Neotree filesystem right reveal action=show<cr>")
-nnoremap("<leader>eg", close_neotree .. "<cmd>:Neotree git_status right reveal action=show<cr>")
-nnoremap("<leader>eb", close_neotree .. "<cmd>:Neotree buffers right reveal action=show<cr>")
+nnoremap("<leader>ef", close_neotree .. "<cmd>:Neotree filesystem right reveal<cr>")
+nnoremap("<leader>eg", close_neotree .. "<cmd>:Neotree git_status right reveal<cr>")
+nnoremap("<leader>eb", close_neotree .. "<cmd>:Neotree buffers right reveal<cr>")
 nnoremap("<leader>et", close_neotree .. "<cmd>:22ToggleTerm direction=vertical size=60 dir=git_dir<cr>")
 
 -- HTML / JSX

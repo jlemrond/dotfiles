@@ -39,6 +39,10 @@ return require("packer").startup(function(use)
 	use({ "catppuccin/nvim", as = "catppuccin" })
 	use({ "embark-theme/vim", as = "embark" })
 	use("rebelot/kanagawa.nvim")
+	use({
+		"rose-pine/neovim",
+		as = "rose-pine",
+	})
 
 	-- Context
 	use("nvim-treesitter/nvim-treesitter")
@@ -73,8 +77,8 @@ return require("packer").startup(function(use)
 
 	-- Git
 	use("lewis6991/gitsigns.nvim")
-	use("kdheepak/lazygit.nvim")
-	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
+	-- use("kdheepak/lazygit.nvim")
+	-- use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 
 	-- Neo Tree
 	-- Unless you are still migrating, remove the deprecated commands from v1.x
