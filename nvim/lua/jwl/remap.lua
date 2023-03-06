@@ -1,6 +1,7 @@
 local nnoremap = require("jwl.keymap").nnoremap
 local inoremap = require("jwl.keymap").inoremap
 local vnoremap = require("jwl.keymap").vnoremap
+local xnoremap = require("jwl.keymap").xnoremap
 
 -- reload neovim config
 nnoremap("<leader>sv", "<cmd>source $MYVIMRC<CR>")
@@ -27,9 +28,14 @@ inoremap("kk", "<esc>")
 inoremap("hh", "<esc>")
 
 -- Paste/delete without replacing register
-nnoremap("<leader>p", '"_dP')
+xnoremap("<leader>p", '"_dP')
 nnoremap("<leader>d", '"_d')
 vnoremap("<leader>d", '"_d')
+
+-- Copy to system clipboard
+nnoremap("<leader>y", '"+y')
+vnoremap("<leader>y", '"+y')
+nnoremap("<leader>Y", '"+Y')
 
 -- Movement Insert
 inoremap("<C-h>", "<Left>")
@@ -48,15 +54,21 @@ nnoremap("=", "=<cr>")
 vnoremap("K", ":m '<-2<CR>gv=gv")
 vnoremap("J", ":m '>+1<CR>gv=gv")
 
+-- Terminal
+nnoremap("<leader>tt", "<cmd>:lua require('jwl.fns').close_and_execute_sidebar(\":echo 'hello'\")<cr>")
+
 -- Neotree
 -- Closing Neotree and reopening allows for the buffer to be refreshed and
 -- reset its correct position.
-local close_neotree = "<cmd>:Neotree close<cr>"
 nnoremap("<leader>ee", "<cmd>:Neotree toggle<cr>")
-nnoremap("<leader>ef", close_neotree .. "<cmd>:Neotree filesystem right reveal<cr>")
-nnoremap("<leader>eg", close_neotree .. "<cmd>:Neotree git_status right reveal<cr>")
-nnoremap("<leader>eb", close_neotree .. "<cmd>:Neotree buffers right reveal<cr>")
-nnoremap("<leader>et", close_neotree .. "<cmd>:22ToggleTerm direction=vertical size=60 dir=git_dir<cr>")
+-- nnoremap("<leader>ec", close_and_execute_sidebar(""))
+nnoremap("<leader>ef", "<cmd>:lua require('jwl.fns').close_and_execute_sidebar(':Neotree filesystem right reveal')<cr>")
+nnoremap("<leader>eg", "<cmd>:lua require('jwl.fns').close_and_execute_sidebar(':Neotree git_status right reveal')<cr>")
+nnoremap("<leader>eb", "<cmd>:lua require('jwl.fns').close_and_execute_sidebar(':Neotree buffers right reveal')<cr>")
+nnoremap(
+	"<leader>et",
+	"<cmd>:lua require('jwl.fns').close_and_execute_sidebar(':22ToggleTerm direction=vertical size=60 dir=git_dir')<cr>"
+)
 
 -- HTML / JSX
 -- nnoremap("ci>", "T>vt<c")

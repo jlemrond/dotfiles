@@ -28,6 +28,7 @@ vim.diagnostic.config({
 })
 
 local lsp_config = require("lspconfig")
+local luasnip = require("luasnip")
 
 -- Typescript server
 lsp_config["astro"].setup({
@@ -50,7 +51,7 @@ lsp_config["emmet_ls"].setup({
 lsp_config["jsonls"].setup({
 	on_attach = on_attach,
 })
-lsp_config["sumneko_lua"].setup({
+lsp_config["lua_ls"].setup({
 	on_attach = on_attach,
 	settings = {
 		Lua = {
@@ -93,15 +94,15 @@ local cmp = require("cmp")
 local lspkind = require("lspkind")
 
 cmp.setup({
-	-- snippet = {
-	-- REQUIRED - you must specify a snippet engine
-	--    expand = function(args)
-	--      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-	-- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-	-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-	-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-	--    end,
-	--},
+	snippet = {
+		-- REQUIRED - you must specify a snippet engine
+		expand = function(args)
+			-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+			require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+			-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+			-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+		end,
+	},
 	formatting = {
 		format = lspkind.cmp_format({
 			mode = "symbol",

@@ -21,6 +21,13 @@ return require("packer").startup(function(use)
 	use("hrsh7th/nvim-cmp")
 	use("onsails/lspkind.nvim")
 
+	-- Snippets
+	use({
+		"L3MON4D3/LuaSnip",
+		-- follow latest release.
+		tag = "v<CurrentMajor>.*",
+	})
+
 	-- Copilot
 	use("github/copilot.vim")
 
@@ -77,8 +84,6 @@ return require("packer").startup(function(use)
 
 	-- Git
 	use("lewis6991/gitsigns.nvim")
-	-- use("kdheepak/lazygit.nvim")
-	-- use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 
 	-- Neo Tree
 	-- Unless you are still migrating, remove the deprecated commands from v1.x
