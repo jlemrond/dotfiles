@@ -2292,7 +2292,7 @@ select_fg            #CDD6F4
 # MY SETTINGS
 
 # -- Background
-# background_opacity 0.95
+background_opacity 0.95
 dynamic_background_opacity yes
 
 # -- Fonts
@@ -2316,6 +2316,6 @@ map cmd+s send_text all \x13
 # AUTO GENERATED SETTINGS
 
 # BEGIN_KITTY_THEME
-# Gruvbox Light Hard
+# Rosé Pine Dawn
 include current-theme.conf
 # END_KITTY_THEME

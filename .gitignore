@@ -12,6 +12,8 @@
 !karabiner
 !karabiner/**/*
 !starship.toml
+!wow
+!wow/**/*
 
 ####################### Blacklist #######################
 

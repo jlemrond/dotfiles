@@ -26,12 +26,12 @@ require("tokyonight").setup({
 		sidebars = "transparent",
 	},
 	hide_inactive_statusline = true,
-	transparent = false,
+	transparent = true,
 })
 
 -- Kanagawa
 require("kanagawa").setup({
-	transparent = false,
+	transparent = true,
 })
 
 -- Rose Pine
