@@ -21,6 +21,9 @@ return require("packer").startup(function(use)
 	use("hrsh7th/nvim-cmp")
 	use("onsails/lspkind.nvim")
 
+	-- Quickfix
+	use("kevinhwang91/nvim-bqf")
+
 	-- Snippets
 	use({
 		"L3MON4D3/LuaSnip",
@@ -50,6 +53,11 @@ return require("packer").startup(function(use)
 		"rose-pine/neovim",
 		as = "rose-pine",
 	})
+
+	-- Messages
+	use("folke/noice.nvim")
+	use("rcarriga/nvim-notify")
+	use("MunifTanjim/nui.nvim")
 
 	-- Context
 	use("nvim-treesitter/nvim-treesitter")
@@ -126,4 +134,7 @@ return require("packer").startup(function(use)
 			require("cinnamon").setup()
 		end,
 	})
+
+	-- Navigator
+	use("christoomey/vim-tmux-navigator")
 end)

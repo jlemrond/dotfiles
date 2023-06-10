@@ -15,6 +15,7 @@ require("nvim-treesitter.configs").setup({
 		"css",
 		"html",
 		"lua",
+		"rust",
 	},
 	auto_install = true,
 	autotag = {

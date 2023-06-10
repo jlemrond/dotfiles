@@ -2,6 +2,16 @@
 require("mason").setup()
 require("mason-lspconfig").setup()
 
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+
+vim.diagnostic.config({
+	float = {
+		border = "rounded",
+	},
+})
+
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "<space>i", vim.diagnostic.open_float, opts)
 vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_prev, opts)
@@ -28,7 +38,6 @@ vim.diagnostic.config({
 })
 
 local lsp_config = require("lspconfig")
-local luasnip = require("luasnip")
 
 -- Typescript server
 lsp_config["astro"].setup({
@@ -46,6 +55,9 @@ lsp_config["cssls"].setup({
 	},
 })
 lsp_config["emmet_ls"].setup({
+	on_attach = on_attach,
+})
+lsp_config["gopls"].setup({
 	on_attach = on_attach,
 })
 lsp_config["jsonls"].setup({
@@ -74,13 +86,13 @@ lsp_config["lua_ls"].setup({
 lsp_config["prismals"].setup({
 	on_attach = on_attach,
 })
-lsp_config["prismals"].setup({
-	on_attach = on_attach,
-})
 lsp_config["tailwindcss"].setup({
 	on_attach = on_attach,
 })
 lsp_config["tsserver"].setup({
+	on_attach = on_attach,
+})
+lsp_config["rust_analyzer"].setup({
 	on_attach = on_attach,
 })
 lsp_config["yamlls"].setup({
@@ -117,11 +129,12 @@ cmp.setup({
 		documentation = cmp.config.window.bordered(),
 	},
 	mapping = cmp.mapping.preset.insert({
+		["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+		["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
 		["<C-b>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
-		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-e>"] = cmp.mapping.abort(),
-		["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+		["<CR>"] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 	}),
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },

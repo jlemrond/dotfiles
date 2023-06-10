@@ -22,6 +22,14 @@ null_ls.setup({
 		}),
 		b.formatting.stylua,
 		b.formatting.yamlfmt,
+
+		-- Code actions
+		b.code_actions.cspell,
+		-- b.code_actions.gitsigns,
+		b.code_actions.eslint_d.with({
+			prefer_local = true,
+		}),
+		-- b.code_actions.refactoring,
 	},
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then
