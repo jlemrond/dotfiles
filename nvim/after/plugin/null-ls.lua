@@ -1,19 +1,35 @@
+print("null-ls")
 local null_ls = require("null-ls")
+local cspell = require("cspell")
 
 local b = null_ls.builtins
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
+-- local cspell_config = {
+-- 	diagnostics_postprocess = function(diagnostic)
+-- 		diagnostic.severity = vim.diagnostic.severity["WARN"] -- ERROR, WARN, INFO, HINT
+-- 	end,
+-- 	config = {
+-- 		find_json = function(_)
+-- 			return vim.fn.expand("~/.config/cspell/cspell.json")
+-- 		end,
+-- 	},
+-- }
+--
+local test = {}
+local setslkj = {}
+
 null_ls.setup({
 	sources = {
 		-- Diagnostics
-		b.diagnostics.eslint_d.with({
+		require("none-ls.diagnostics.eslint").with({
 			prefer_local = true,
 			filter = function(diagnostic)
 				return diagnostic.code ~= "prettier/prettier"
 			end,
 		}),
-		b.diagnostics.cspell,
+		cspell.diagnostics,
 		b.diagnostics.write_good,
 
 		-- Formatting
@@ -22,13 +38,15 @@ null_ls.setup({
 		}),
 		b.formatting.stylua,
 		b.formatting.yamlfmt,
+		b.formatting.gofmt,
+		b.formatting.goimports_reviser,
 
 		-- Code actions
-		b.code_actions.cspell,
 		-- b.code_actions.gitsigns,
-		b.code_actions.eslint_d.with({
+		require("none-ls.code_actions.eslint").with({
 			prefer_local = true,
 		}),
+		cspell.code_actions,
 		-- b.code_actions.refactoring,
 	},
 	on_attach = function(client, bufnr)

@@ -11,6 +11,14 @@ return require("packer").startup(function(use)
 	use({
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
+		"jay-babu/mason-null-ls.nvim"
+	})
+	use({
+		"olexsmir/gopher.nvim",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		},
 	})
 
 	-- LSP / Completion
@@ -27,8 +35,6 @@ return require("packer").startup(function(use)
 	-- Snippets
 	use({
 		"L3MON4D3/LuaSnip",
-		-- follow latest release.
-		tag = "v<CurrentMajor>.*",
 	})
 
 	-- Copilot
@@ -45,13 +51,20 @@ return require("packer").startup(function(use)
 	-- Themes
 	use("morhetz/gruvbox")
 	use("hukl/Smyck-Color-Scheme")
+	use("ramojus/mellifluous.nvim")
 	use("folke/tokyonight.nvim")
 	use({ "catppuccin/nvim", as = "catppuccin" })
 	use({ "embark-theme/vim", as = "embark" })
 	use("rebelot/kanagawa.nvim")
+	use("projekt0n/github-nvim-theme")
 	use({
 		"rose-pine/neovim",
 		as = "rose-pine",
+	})
+	use("EdenEast/nightfox.nvim")
+	use({
+		"mcchrish/zenbones.nvim",
+		requires = "rktjmp/lush.nvim",
 	})
 
 	-- Messages
@@ -78,11 +91,13 @@ return require("packer").startup(function(use)
 
 	-- Linters
 	use({
-		"jose-elias-alvarez/null-ls.nvim",
+		"nvimtools/none-ls.nvim",
 		requires = {
 			"nvim-lua/plenary.nvim",
+			"nvimtools/none-ls-extras.nvim",
 		},
 	})
+	use("davidmh/cspell.nvim")
 
 	-- Terminal
 	use({
@@ -128,12 +143,12 @@ return require("packer").startup(function(use)
 	})
 
 	-- Smooth Scrolling
-	use({
-		"declancm/cinnamon.nvim",
-		config = function()
-			require("cinnamon").setup()
-		end,
-	})
+	-- use({
+	-- 	"declancm/cinnamon.nvim",
+	-- 	config = function()
+	-- 		require("cinnamon").setup()
+	-- 	end,
+	-- })
 
 	-- Navigator
 	use("christoomey/vim-tmux-navigator")

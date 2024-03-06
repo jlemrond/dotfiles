@@ -3,6 +3,8 @@
 ####################### Whitelist #######################
 
 !.gitignore
+!cspell
+!cspell/**/*
 !kitty
 !kitty/*
 !tmux

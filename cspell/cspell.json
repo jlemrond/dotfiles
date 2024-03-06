@@ -1,0 +1,14 @@
+{
+	"version": "0.2",
+	"language": "en",
+	"globRoot": ".",
+	"dictionaryDefinitions": [
+		{
+			"name": "words",
+			"path": "./words.txt",
+			"addWords": true
+		}
+	],
+	"dictionaries": ["words"],
+	"words": []
+}

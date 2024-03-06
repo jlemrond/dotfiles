@@ -8,6 +8,7 @@
     },
     "profiles": [
         {
+            "name": "Default",
             "complex_modifications": {
                 "parameters": {
                     "basic.simultaneous_threshold_milliseconds": 50,
@@ -91,7 +92,6 @@
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "caps_lock",
                                     "modifiers": {
                                         "optional": [
                                             "left_command",
@@ -101,7 +101,8 @@
                                             "right_command",
                                             "right_shift"
                                         ]
-                                    }
+                                    },
+                                    "key_code": "caps_lock"
                                 },
                                 "to": [
                                     {
@@ -122,15 +123,7 @@
                         "description": "Ctrl + D for Scroll Down",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "company.thebrowser.Browser",
-                                            "com.google.Chrome"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
+                                "type": "basic",
                                 "from": {
                                     "key_code": "d",
                                     "modifiers": {
@@ -144,7 +137,15 @@
                                         "key_code": "page_down"
                                     }
                                 ],
-                                "type": "basic"
+                                "conditions": [
+                                    {
+                                        "type": "frontmost_application_if",
+                                        "bundle_identifiers": [
+                                            "company.thebrowser.Browser",
+                                            "com.google.Chrome"
+                                        ]
+                                    }
+                                ]
                             }
                         ]
                     },
@@ -152,15 +153,7 @@
                         "description": "Ctrl + U for Scroll Up",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "company.thebrowser.Browser",
-                                            "com.google.Chrome"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
+                                "type": "basic",
                                 "from": {
                                     "key_code": "u",
                                     "modifiers": {
@@ -174,7 +167,15 @@
                                         "key_code": "page_up"
                                     }
                                 ],
-                                "type": "basic"
+                                "conditions": [
+                                    {
+                                        "type": "frontmost_application_if",
+                                        "bundle_identifiers": [
+                                            "company.thebrowser.Browser",
+                                            "com.google.Chrome"
+                                        ]
+                                    }
+                                ]
                             }
                         ]
                     },
@@ -182,15 +183,7 @@
                         "description": "Ctrl + N for Arrow Down",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "company.thebrowser.Browser",
-                                            "com.google.Chrome"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
+                                "type": "basic",
                                 "from": {
                                     "key_code": "n",
                                     "modifiers": {
@@ -204,7 +197,15 @@
                                         "key_code": "down_arrow"
                                     }
                                 ],
-                                "type": "basic"
+                                "conditions": [
+                                    {
+                                        "type": "frontmost_application_if",
+                                        "bundle_identifiers": [
+                                            "company.thebrowser.Browser",
+                                            "com.google.Chrome"
+                                        ]
+                                    }
+                                ]
                             }
                         ]
                     },
@@ -212,15 +213,7 @@
                         "description": "Ctrl + P for Arrow Up",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "company.thebrowser.Browser",
-                                            "com.google.Chrome"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
+                                "type": "basic",
                                 "from": {
                                     "key_code": "p",
                                     "modifiers": {
@@ -234,7 +227,15 @@
                                         "key_code": "up_arrow"
                                     }
                                 ],
-                                "type": "basic"
+                                "conditions": [
+                                    {
+                                        "type": "frontmost_application_if",
+                                        "bundle_identifiers": [
+                                            "company.thebrowser.Browser",
+                                            "com.google.Chrome"
+                                        ]
+                                    }
+                                ]
                             }
                         ]
                     },
@@ -242,14 +243,8 @@
                         "description": "Super Key sublayer \"a\"",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "name": "super_sublayer_s",
-                                        "type": "variable_if",
-                                        "value": 0
-                                    }
-                                ],
                                 "description": "Toggle Super sublayer a",
+                                "type": "basic",
                                 "from": {
                                     "key_code": "a",
                                     "modifiers": {
@@ -260,14 +255,6 @@
                                         ]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "set_variable": {
-                                            "name": "super_sublayer_a",
-                                            "value": 1
-                                        }
-                                    }
-                                ],
                                 "to_after_key_up": [
                                     {
                                         "set_variable": {
@@ -276,17 +263,30 @@
                                         }
                                     }
                                 ],
-                                "type": "basic"
-                            },
-                            {
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "super_sublayer_a",
+                                            "value": 1
+                                        }
+                                    }
+                                ],
                                 "conditions": [
                                     {
-                                        "name": "super_sublayer_a",
                                         "type": "variable_if",
-                                        "value": 1
+                                        "name": "super_sublayer_s",
+                                        "value": 0
+                                    }
+                                ]
+                            },
+                            {
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Arc.app'"
                                     }
                                 ],
                                 "description": "Open -a 'Arc.app'",
+                                "type": "basic",
                                 "from": {
                                     "key_code": "e",
                                     "modifiers": {
@@ -295,22 +295,22 @@
                                         ]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open -a 'Arc.app'"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
                                 "conditions": [
                                     {
-                                        "name": "super_sublayer_a",
                                         "type": "variable_if",
+                                        "name": "super_sublayer_a",
                                         "value": 1
+                                    }
+                                ]
+                            },
+                            {
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'iTerm.app'"
                                     }
                                 ],
                                 "description": "Open -a 'iTerm.app'",
+                                "type": "basic",
                                 "from": {
                                     "key_code": "c",
                                     "modifiers": {
@@ -319,22 +319,22 @@
                                         ]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open -a 'iTerm.app'"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
                                 "conditions": [
                                     {
-                                        "name": "super_sublayer_a",
                                         "type": "variable_if",
+                                        "name": "super_sublayer_a",
                                         "value": 1
+                                    }
+                                ]
+                            },
+                            {
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Figma.app'"
                                     }
                                 ],
                                 "description": "Open -a 'Figma.app'",
+                                "type": "basic",
                                 "from": {
                                     "key_code": "f",
                                     "modifiers": {
@@ -343,22 +343,22 @@
                                         ]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open -a 'Figma.app'"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
                                 "conditions": [
                                     {
-                                        "name": "super_sublayer_a",
                                         "type": "variable_if",
+                                        "name": "super_sublayer_a",
                                         "value": 1
+                                    }
+                                ]
+                            },
+                            {
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Visual Studio Code.app'"
                                     }
                                 ],
                                 "description": "Open -a 'Visual Studio Code.app'",
+                                "type": "basic",
                                 "from": {
                                     "key_code": "v",
                                     "modifiers": {
@@ -367,22 +367,22 @@
                                         ]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open -a 'Visual Studio Code.app'"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
                                 "conditions": [
                                     {
-                                        "name": "super_sublayer_a",
                                         "type": "variable_if",
+                                        "name": "super_sublayer_a",
                                         "value": 1
+                                    }
+                                ]
+                            },
+                            {
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Postman.app'"
                                     }
                                 ],
                                 "description": "Open -a 'Postman.app'",
+                                "type": "basic",
                                 "from": {
                                     "key_code": "p",
                                     "modifiers": {
@@ -391,22 +391,22 @@
                                         ]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open -a 'Postman.app'"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
                                 "conditions": [
                                     {
-                                        "name": "super_sublayer_a",
                                         "type": "variable_if",
+                                        "name": "super_sublayer_a",
                                         "value": 1
+                                    }
+                                ]
+                            },
+                            {
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Discord.app'"
                                     }
                                 ],
                                 "description": "Open -a 'Discord.app'",
+                                "type": "basic",
                                 "from": {
                                     "key_code": "d",
                                     "modifiers": {
@@ -415,22 +415,22 @@
                                         ]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open -a 'Discord.app'"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
                                 "conditions": [
                                     {
-                                        "name": "super_sublayer_a",
                                         "type": "variable_if",
+                                        "name": "super_sublayer_a",
                                         "value": 1
+                                    }
+                                ]
+                            },
+                            {
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Slack.app'"
                                     }
                                 ],
                                 "description": "Open -a 'Slack.app'",
+                                "type": "basic",
                                 "from": {
                                     "key_code": "s",
                                     "modifiers": {
@@ -439,46 +439,46 @@
                                         ]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open -a 'Slack.app'"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
                                 "conditions": [
                                     {
-                                        "name": "super_sublayer_a",
                                         "type": "variable_if",
+                                        "name": "super_sublayer_a",
                                         "value": 1
+                                    }
+                                ]
+                            },
+                            {
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'World of Warcraft Classic.app'"
                                     }
                                 ],
                                 "description": "Open -a 'World of Warcraft Classic.app'",
+                                "type": "basic",
                                 "from": {
-                                    "key_code": "u",
+                                    "key_code": "g",
                                     "modifiers": {
                                         "mandatory": [
                                             "any"
                                         ]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open -a 'World of Warcraft Classic.app'"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
                                 "conditions": [
                                     {
-                                        "name": "super_sublayer_a",
                                         "type": "variable_if",
+                                        "name": "super_sublayer_a",
                                         "value": 1
+                                    }
+                                ]
+                            },
+                            {
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Notion.app'"
                                     }
                                 ],
                                 "description": "Open -a 'Notion.app'",
+                                "type": "basic",
                                 "from": {
                                     "key_code": "n",
                                     "modifiers": {
@@ -487,22 +487,22 @@
                                         ]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open -a 'Notion.app'"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
                                 "conditions": [
                                     {
-                                        "name": "super_sublayer_a",
                                         "type": "variable_if",
+                                        "name": "super_sublayer_a",
                                         "value": 1
+                                    }
+                                ]
+                            },
+                            {
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'iTerm.app'"
                                     }
                                 ],
                                 "description": "Open -a 'iTerm.app'",
+                                "type": "basic",
                                 "from": {
                                     "key_code": "t",
                                     "modifiers": {
@@ -511,22 +511,22 @@
                                         ]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open -a 'iTerm.app'"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
                                 "conditions": [
                                     {
-                                        "name": "super_sublayer_a",
                                         "type": "variable_if",
+                                        "name": "super_sublayer_a",
                                         "value": 1
+                                    }
+                                ]
+                            },
+                            {
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Google Chrome.app'"
                                     }
                                 ],
                                 "description": "Open -a 'Google Chrome.app'",
+                                "type": "basic",
                                 "from": {
                                     "key_code": "b",
                                     "modifiers": {
@@ -535,22 +535,22 @@
                                         ]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open -a 'Google Chrome.app'"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
                                 "conditions": [
                                     {
-                                        "name": "super_sublayer_a",
                                         "type": "variable_if",
+                                        "name": "super_sublayer_a",
                                         "value": 1
+                                    }
+                                ]
+                            },
+                            {
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Messages.app'"
                                     }
                                 ],
                                 "description": "Open -a 'Messages.app'",
+                                "type": "basic",
                                 "from": {
                                     "key_code": "i",
                                     "modifiers": {
@@ -559,22 +559,22 @@
                                         ]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open -a 'Messages.app'"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
                                 "conditions": [
                                     {
-                                        "name": "super_sublayer_a",
                                         "type": "variable_if",
+                                        "name": "super_sublayer_a",
                                         "value": 1
+                                    }
+                                ]
+                            },
+                            {
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Dynobase.app'"
                                     }
                                 ],
                                 "description": "Open -a 'Dynobase.app'",
+                                "type": "basic",
                                 "from": {
                                     "key_code": "w",
                                     "modifiers": {
@@ -583,22 +583,22 @@
                                         ]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open -a 'Dynobase.app'"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
                                 "conditions": [
                                     {
-                                        "name": "super_sublayer_a",
                                         "type": "variable_if",
+                                        "name": "super_sublayer_a",
                                         "value": 1
+                                    }
+                                ]
+                            },
+                            {
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Mail.app'"
                                     }
                                 ],
                                 "description": "Open -a 'Mail.app'",
+                                "type": "basic",
                                 "from": {
                                     "key_code": "m",
                                     "modifiers": {
@@ -607,22 +607,22 @@
                                         ]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open -a 'Mail.app'"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
                                 "conditions": [
                                     {
-                                        "name": "super_sublayer_a",
                                         "type": "variable_if",
+                                        "name": "super_sublayer_a",
                                         "value": 1
+                                    }
+                                ]
+                            },
+                            {
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Beekeeper Studio Ultimate.app'"
                                     }
                                 ],
                                 "description": "Open -a 'Beekeeper Studio Ultimate.app'",
+                                "type": "basic",
                                 "from": {
                                     "key_code": "q",
                                     "modifiers": {
@@ -631,22 +631,22 @@
                                         ]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open -a 'Beekeeper Studio Ultimate.app'"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
                                 "conditions": [
                                     {
-                                        "name": "super_sublayer_a",
                                         "type": "variable_if",
+                                        "name": "super_sublayer_a",
                                         "value": 1
+                                    }
+                                ]
+                            },
+                            {
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Microsoft Excel.app'"
                                     }
                                 ],
                                 "description": "Open -a 'Microsoft Excel.app'",
+                                "type": "basic",
                                 "from": {
                                     "key_code": "x",
                                     "modifiers": {
@@ -655,22 +655,22 @@
                                         ]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open -a 'Microsoft Excel.app'"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
                                 "conditions": [
                                     {
-                                        "name": "super_sublayer_a",
                                         "type": "variable_if",
+                                        "name": "super_sublayer_a",
                                         "value": 1
+                                    }
+                                ]
+                            },
+                            {
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Finder.app'"
                                     }
                                 ],
                                 "description": "Open -a 'Finder.app'",
+                                "type": "basic",
                                 "from": {
                                     "key_code": "semicolon",
                                     "modifiers": {
@@ -679,12 +679,13 @@
                                         ]
                                     }
                                 },
-                                "to": [
+                                "conditions": [
                                     {
-                                        "shell_command": "open -a 'Finder.app'"
+                                        "type": "variable_if",
+                                        "name": "super_sublayer_a",
+                                        "value": 1
                                     }
-                                ],
-                                "type": "basic"
+                                ]
                             }
                         ]
                     },
@@ -692,14 +693,8 @@
                         "description": "Super Key sublayer \"s\"",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "name": "super_sublayer_a",
-                                        "type": "variable_if",
-                                        "value": 0
-                                    }
-                                ],
                                 "description": "Toggle Super sublayer s",
+                                "type": "basic",
                                 "from": {
                                     "key_code": "s",
                                     "modifiers": {
@@ -710,14 +705,6 @@
                                         ]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "set_variable": {
-                                            "name": "super_sublayer_s",
-                                            "value": 1
-                                        }
-                                    }
-                                ],
                                 "to_after_key_up": [
                                     {
                                         "set_variable": {
@@ -726,16 +713,29 @@
                                         }
                                     }
                                 ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
+                                "to": [
                                     {
-                                        "name": "super_sublayer_s",
-                                        "type": "variable_if",
-                                        "value": 1
+                                        "set_variable": {
+                                            "name": "super_sublayer_s",
+                                            "value": 1
+                                        }
                                     }
                                 ],
+                                "conditions": [
+                                    {
+                                        "type": "variable_if",
+                                        "name": "super_sublayer_a",
+                                        "value": 0
+                                    }
+                                ]
+                            },
+                            {
+                                "to": [
+                                    {
+                                        "key_code": "volume_increment"
+                                    }
+                                ],
+                                "type": "basic",
                                 "from": {
                                     "key_code": "u",
                                     "modifiers": {
@@ -744,21 +744,21 @@
                                         ]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "key_code": "volume_increment"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
                                 "conditions": [
                                     {
-                                        "name": "super_sublayer_s",
                                         "type": "variable_if",
+                                        "name": "super_sublayer_s",
                                         "value": 1
                                     }
+                                ]
+                            },
+                            {
+                                "to": [
+                                    {
+                                        "key_code": "volume_decrement"
+                                    }
                                 ],
+                                "type": "basic",
                                 "from": {
                                     "key_code": "j",
                                     "modifiers": {
@@ -767,21 +767,21 @@
                                         ]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "key_code": "volume_decrement"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
                                 "conditions": [
                                     {
-                                        "name": "super_sublayer_s",
                                         "type": "variable_if",
+                                        "name": "super_sublayer_s",
                                         "value": 1
                                     }
+                                ]
+                            },
+                            {
+                                "to": [
+                                    {
+                                        "key_code": "display_brightness_increment"
+                                    }
                                 ],
+                                "type": "basic",
                                 "from": {
                                     "key_code": "i",
                                     "modifiers": {
@@ -790,21 +790,21 @@
                                         ]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "key_code": "display_brightness_increment"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
                                 "conditions": [
                                     {
-                                        "name": "super_sublayer_s",
                                         "type": "variable_if",
+                                        "name": "super_sublayer_s",
                                         "value": 1
                                     }
+                                ]
+                            },
+                            {
+                                "to": [
+                                    {
+                                        "key_code": "display_brightness_decrement"
+                                    }
                                 ],
+                                "type": "basic",
                                 "from": {
                                     "key_code": "k",
                                     "modifiers": {
@@ -813,29 +813,15 @@
                                         ]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "key_code": "display_brightness_decrement"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
                                 "conditions": [
                                     {
-                                        "name": "super_sublayer_s",
                                         "type": "variable_if",
+                                        "name": "super_sublayer_s",
                                         "value": 1
                                     }
-                                ],
-                                "from": {
-                                    "key_code": "l",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "any"
-                                        ]
-                                    }
-                                },
+                                ]
+                            },
+                            {
                                 "to": [
                                     {
                                         "key_code": "q",
@@ -845,16 +831,30 @@
                                         ]
                                     }
                                 ],
-                                "type": "basic"
-                            },
-                            {
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "any"
+                                        ]
+                                    }
+                                },
                                 "conditions": [
                                     {
-                                        "name": "super_sublayer_s",
                                         "type": "variable_if",
+                                        "name": "super_sublayer_s",
                                         "value": 1
                                     }
+                                ]
+                            },
+                            {
+                                "to": [
+                                    {
+                                        "key_code": "play_or_pause"
+                                    }
                                 ],
+                                "type": "basic",
                                 "from": {
                                     "key_code": "p",
                                     "modifiers": {
@@ -863,21 +863,21 @@
                                         ]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "key_code": "play_or_pause"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
                                 "conditions": [
                                     {
-                                        "name": "super_sublayer_s",
                                         "type": "variable_if",
+                                        "name": "super_sublayer_s",
                                         "value": 1
                                     }
+                                ]
+                            },
+                            {
+                                "to": [
+                                    {
+                                        "key_code": "fastforward"
+                                    }
                                 ],
+                                "type": "basic",
                                 "from": {
                                     "key_code": "semicolon",
                                     "modifiers": {
@@ -886,29 +886,15 @@
                                         ]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "key_code": "fastforward"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
                                 "conditions": [
                                     {
-                                        "name": "super_sublayer_s",
                                         "type": "variable_if",
+                                        "name": "super_sublayer_s",
                                         "value": 1
                                     }
-                                ],
-                                "from": {
-                                    "key_code": "e",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "any"
-                                        ]
-                                    }
-                                },
+                                ]
+                            },
+                            {
                                 "to": [
                                     {
                                         "key_code": "spacebar",
@@ -918,244 +904,26 @@
                                         ]
                                     }
                                 ],
-                                "type": "basic"
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "e",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "conditions": [
+                                    {
+                                        "type": "variable_if",
+                                        "name": "super_sublayer_s",
+                                        "value": 1
+                                    }
+                                ]
                             }
                         ]
                     }
                 ]
-            },
-            "devices": [
-                {
-                    "disable_built_in_keyboard_if_exists": false,
-                    "fn_function_keys": [],
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "is_pointing_device": false,
-                        "product_id": 835,
-                        "vendor_id": 1452
-                    },
-                    "ignore": false,
-                    "manipulate_caps_lock_led": true,
-                    "simple_modifications": [],
-                    "treat_as_built_in_keyboard": false
-                },
-                {
-                    "disable_built_in_keyboard_if_exists": false,
-                    "fn_function_keys": [],
-                    "identifiers": {
-                        "is_keyboard": false,
-                        "is_pointing_device": true,
-                        "product_id": 835,
-                        "vendor_id": 1452
-                    },
-                    "ignore": true,
-                    "manipulate_caps_lock_led": false,
-                    "simple_modifications": [],
-                    "treat_as_built_in_keyboard": false
-                },
-                {
-                    "disable_built_in_keyboard_if_exists": false,
-                    "fn_function_keys": [],
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "is_pointing_device": false,
-                        "product_id": 49970,
-                        "vendor_id": 1133
-                    },
-                    "ignore": true,
-                    "manipulate_caps_lock_led": true,
-                    "simple_modifications": [],
-                    "treat_as_built_in_keyboard": false
-                },
-                {
-                    "disable_built_in_keyboard_if_exists": false,
-                    "fn_function_keys": [],
-                    "identifiers": {
-                        "is_keyboard": false,
-                        "is_pointing_device": true,
-                        "product_id": 49970,
-                        "vendor_id": 1133
-                    },
-                    "ignore": true,
-                    "manipulate_caps_lock_led": false,
-                    "simple_modifications": [],
-                    "treat_as_built_in_keyboard": false
-                },
-                {
-                    "disable_built_in_keyboard_if_exists": false,
-                    "fn_function_keys": [],
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "is_pointing_device": true,
-                        "product_id": 591,
-                        "vendor_id": 1452
-                    },
-                    "ignore": true,
-                    "manipulate_caps_lock_led": true,
-                    "simple_modifications": [],
-                    "treat_as_built_in_keyboard": false
-                },
-                {
-                    "disable_built_in_keyboard_if_exists": false,
-                    "fn_function_keys": [],
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "is_pointing_device": false,
-                        "product_id": 591,
-                        "vendor_id": 1452
-                    },
-                    "ignore": false,
-                    "manipulate_caps_lock_led": true,
-                    "simple_modifications": [],
-                    "treat_as_built_in_keyboard": false
-                },
-                {
-                    "disable_built_in_keyboard_if_exists": false,
-                    "fn_function_keys": [],
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "is_pointing_device": true,
-                        "product_id": 45092,
-                        "vendor_id": 1133
-                    },
-                    "ignore": true,
-                    "manipulate_caps_lock_led": true,
-                    "simple_modifications": [],
-                    "treat_as_built_in_keyboard": false
-                }
-            ],
-            "fn_function_keys": [
-                {
-                    "from": {
-                        "key_code": "f1"
-                    },
-                    "to": [
-                        {
-                            "consumer_key_code": "display_brightness_decrement"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "f2"
-                    },
-                    "to": [
-                        {
-                            "consumer_key_code": "display_brightness_increment"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "f3"
-                    },
-                    "to": [
-                        {
-                            "apple_vendor_keyboard_key_code": "mission_control"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "f4"
-                    },
-                    "to": [
-                        {
-                            "apple_vendor_keyboard_key_code": "spotlight"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "f5"
-                    },
-                    "to": [
-                        {
-                            "consumer_key_code": "dictation"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "f6"
-                    },
-                    "to": [
-                        {
-                            "key_code": "f6"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "f7"
-                    },
-                    "to": [
-                        {
-                            "consumer_key_code": "rewind"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "f8"
-                    },
-                    "to": [
-                        {
-                            "consumer_key_code": "play_or_pause"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "f9"
-                    },
-                    "to": [
-                        {
-                            "consumer_key_code": "fast_forward"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "f10"
-                    },
-                    "to": [
-                        {
-                            "consumer_key_code": "mute"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "f11"
-                    },
-                    "to": [
-                        {
-                            "consumer_key_code": "volume_decrement"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "key_code": "f12"
-                    },
-                    "to": [
-                        {
-                            "consumer_key_code": "volume_increment"
-                        }
-                    ]
-                }
-            ],
-            "name": "Default",
-            "parameters": {
-                "delay_milliseconds_before_open_device": 1000
-            },
-            "selected": false,
-            "simple_modifications": [],
-            "virtual_hid_keyboard": {
-                "country_code": 0,
-                "indicate_sticky_modifier_keys_state": true,
-                "mouse_key_xy_scale": 100
             }
         }
     ]

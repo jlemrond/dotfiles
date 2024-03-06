@@ -1,9 +1,13 @@
 -- Mason
+print("mason")
 require("mason").setup()
 require("mason-lspconfig").setup()
+require("mason-null-ls").setup({
+	ensure_installed = { "stylua", "cspell" },
+	automatic_installation = true,
+})
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 
 vim.diagnostic.config({
@@ -24,6 +28,7 @@ local on_attach = function(_, bufnr)
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
 	vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, bufopts)
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+	vim.keymap.set("n", "gr", "<Cmd>Telescope lsp_references<CR>", bufopts)
 	vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, bufopts)
 	vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, bufopts)
 	vim.keymap.set("n", "ga", vim.lsp.buf.code_action, bufopts)
@@ -59,6 +64,14 @@ lsp_config["emmet_ls"].setup({
 })
 lsp_config["gopls"].setup({
 	on_attach = on_attach,
+	settings = {
+		gopls = {
+			completeUnimported = true,
+			analyses = {
+				unusedparams = true,
+			},
+		},
+	},
 })
 lsp_config["jsonls"].setup({
 	on_attach = on_attach,

@@ -1,7 +1,6 @@
 -- Catpuccin
 vim.g.catppuccin_flavour = "mocha"
 require("catppuccin").setup({
-	transparent_background = true,
 	dim_inactive = {
 		enable = true,
 	},
@@ -17,25 +16,28 @@ require("catppuccin").setup({
 
 vim.opt.background = "dark"
 
+-- Nightfox
+require("nightfox").setup()
+
+-- Github
+require("github-theme").setup()
+
 -- Tokyonight
 require("tokyonight").setup({
 	styles = {
 		functions = { italic = false },
 		keywords = { italic = false },
 		variables = { italic = false },
-		sidebars = "transparent",
 	},
 	hide_inactive_statusline = true,
-	transparent = true,
 })
 
 -- Kanagawa
-require("kanagawa").setup({
-	transparent = true,
-})
+require("kanagawa").setup()
 
 -- Rose Pine
 require("rose-pine").setup({
+	transparent = true,
 	dark_variant = "moon",
 })
 
@@ -81,9 +83,10 @@ require("lualine").setup({
 	options = {
 		theme = "catppuccin",
 		component_separators = "|",
-		-- section_separators = { left = '', right = '' },
+		-- section_separators = { left = "", right = "" },
 		-- section_separators = { left = '', right = ''},
-		section_separators = { left = "", right = "" },
+		-- section_separators = { left = "", right = "" },
+		section_separators = { left = "", right = "" },
 	},
 	extensions = { "neo-tree" },
 	sections = {

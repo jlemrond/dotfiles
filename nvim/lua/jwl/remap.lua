@@ -6,10 +6,14 @@ local xnoremap = require("jwl.keymap").xnoremap
 -- reload neovim config
 nnoremap("<leader>sv", "<cmd>source $MYVIMRC<CR>")
 
+-- Scroll
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
 -- telescope
 nnoremap("<leader>fe", "<cmd>Ex<cr>")
 nnoremap("<leader>fp", "<cmd>lua require('telescope.builtin').find_files()<cr>")
-nnoremap("<C-p>", "<cmd>lua require('telescope.builtin').find_files()<cr>")
+nnoremap("<D-t>", "<cmd>lua require('telescope.builtin').find_files()<cr>")
 nnoremap("<leader>ff", "<cmd>Telescope live_grep<cr>")
 nnoremap("<leader>fg", "<cmd>Telescope live_grep<cr>")
 nnoremap("<leader>fb", "<cmd>Telescope buffers<cr>")
@@ -22,6 +26,8 @@ nnoremap("<leader>git", "<cmd>:LazyGit<cr>")
 -- Save
 nnoremap("<C-s>", "<cmd>:w<cr>")
 inoremap("<C-s>", "<cmd>:w<cr>")
+nnoremap("<D-s>", "<cmd>:w<cr>")
+inoremap("<D-s>", "<cmd>:w<cr>")
 
 -- Escape
 inoremap("jj", "<esc>")
@@ -70,9 +76,9 @@ nnoremap("<leader>tt", "<cmd>:lua require('jwl.fns').close_and_execute_sidebar(\
 -- reset its correct position.
 nnoremap("<leader>ee", "<cmd>:Neotree toggle<cr>")
 nnoremap("<leader>ec", "<cmd>:lua require('jwl.fns').close_and_execute_sidebar('')<cr>")
-nnoremap("<leader>ef", "<cmd>:lua require('jwl.fns').close_and_execute_sidebar(':Neotree filesystem right reveal')<cr>")
-nnoremap("<leader>eg", "<cmd>:lua require('jwl.fns').close_and_execute_sidebar(':Neotree git_status right reveal')<cr>")
-nnoremap("<leader>eb", "<cmd>:lua require('jwl.fns').close_and_execute_sidebar(':Neotree buffers right reveal')<cr>")
+nnoremap("<leader>ef", "<cmd>:lua require('jwl.fns').close_and_execute_sidebar(':Neotree filesystem left reveal')<cr>")
+nnoremap("<leader>eg", "<cmd>:lua require('jwl.fns').close_and_execute_sidebar(':Neotree git_status left reveal')<cr>")
+nnoremap("<leader>eb", "<cmd>:lua require('jwl.fns').close_and_execute_sidebar(':Neotree buffers left reveal')<cr>")
 nnoremap(
 	"<leader>et",
 	"<cmd>:lua require('jwl.fns').close_and_execute_sidebar(':22ToggleTerm direction=vertical size=80 dir=git_dir')<cr>"
