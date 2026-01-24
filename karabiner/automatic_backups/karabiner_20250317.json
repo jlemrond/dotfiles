@@ -65,8 +65,7 @@
                                     {
                                         "bundle_identifiers": [
                                             "company.thebrowser.Browser",
-                                            "com.google.Chrome",
-                                            "org.godotengine.godot"
+                                            "com.google.Chrome"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -88,8 +87,7 @@
                                     {
                                         "bundle_identifiers": [
                                             "company.thebrowser.Browser",
-                                            "com.google.Chrome",
-                                            "org.godotengine.godot"
+                                            "com.google.Chrome"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -286,22 +284,6 @@
                                     "modifiers": { "mandatory": ["any"] }
                                 },
                                 "to": [{ "shell_command": "open -a 'Figma.app'" }],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "super_sublayer_a",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "description": "Open -a 'Godot_mono.app'",
-                                "from": {
-                                    "key_code": "g",
-                                    "modifiers": { "mandatory": ["any"] }
-                                },
-                                "to": [{ "shell_command": "open -a 'Godot_mono.app'" }],
                                 "type": "basic"
                             },
                             {

@@ -4,11 +4,14 @@ require("gopher").setup({
 	commands = {
 		go = "go",
 		gomodifytags = "gomodifytags",
-		gotests = "~/go/bin/gotests", -- also you can set custom command path
+		gotests = "gotests", -- also you can set custom command path
 		impl = "impl",
 		iferr = "iferr",
 	},
 })
+
+-- Install Gopher dependencies
+vim.cmd([[silent! GoInstallDeps]])
 
 nnoremap("<leader>le", "<cmd>:GoIfErr<cr>")
 nnoremap("<leader>lt", "<cmd>:GoTestAdd<cr>")

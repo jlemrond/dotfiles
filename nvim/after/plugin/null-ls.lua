@@ -1,4 +1,3 @@
-print("null-ls")
 local null_ls = require("null-ls")
 local cspell = require("cspell")
 
@@ -6,19 +5,8 @@ local b = null_ls.builtins
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
--- local cspell_config = {
--- 	diagnostics_postprocess = function(diagnostic)
--- 		diagnostic.severity = vim.diagnostic.severity["WARN"] -- ERROR, WARN, INFO, HINT
--- 	end,
--- 	config = {
--- 		find_json = function(_)
--- 			return vim.fn.expand("~/.config/cspell/cspell.json")
--- 		end,
--- 	},
--- }
---
-local test = {}
-local setslkj = {}
+-- Steps:
+-- Install Delve
 
 null_ls.setup({
 	sources = {

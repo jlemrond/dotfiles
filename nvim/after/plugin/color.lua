@@ -43,6 +43,25 @@ require("rose-pine").setup({
 
 vim.cmd("colorscheme catppuccin")
 
+-- Use `:Telescope highlights` to see the current highlights
+local function add_highlights()
+	if vim.g.colors_name == "tokyonight" then
+		vim.api.nvim_set_hl(0, "NeoTreeGitUntracked", { link = "@constant.macro" })
+		vim.api.nvim_set_hl(0, "NeoTreeGitUnstaged", { link = "NeoTreeModified" })
+		vim.api.nvim_set_hl(0, "NeoTreeGitModified", { link = "NeoTreeModified" })
+	end
+end
+
+-- Autocmd
+vim.api.nvim_create_autocmd({ "ColorScheme" }, {
+	callback = function()
+		print("ColorScheme changed")
+		add_highlights()
+	end,
+})
+
+add_highlights()
+
 -- Git Signs
 require("gitsigns").setup()
 

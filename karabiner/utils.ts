@@ -164,6 +164,20 @@ export function open(what: string): LayerCommand {
 }
 
 /**
+ * Open via AppleScript "activate" command, which will open the app if not open,
+ */
+export function appleScriptOpen(what: string): LayerCommand {
+	return {
+		to: [
+			{
+				shell_command: `osascript -e 'tell application "${what}" to activate'`,
+			},
+		],
+		description: `Open ${what}`,
+	};
+}
+
+/**
  * Shortcut for "Open an app" command (of which there are a bunch)
  */
 export function app(name: string): LayerCommand {

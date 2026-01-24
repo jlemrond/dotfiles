@@ -1,6 +1,14 @@
 import fs from "fs";
 import { KarabinerRules } from "./types";
-import { createSuperSubLayers, app, remap } from "./utils";
+import {
+	createSuperSubLayers,
+	app,
+	remap,
+	open,
+	appleScriptOpen,
+} from "./utils";
+
+const superKey = ["left_command", "left_control", "left_shift"];
 
 const rules: KarabinerRules[] = [
 	// Define the Super key itself
@@ -22,24 +30,24 @@ const rules: KarabinerRules[] = [
 			},
 		],
 	},
-	{
-		description: "Super Key (⌃⇧⌘)",
-		manipulators: [
-			{
-				description: "Right Cmd -> Super Key",
-				from: {
-					key_code: "right_shift",
-				},
-				to: [
-					{
-						key_code: "left_shift",
-						modifiers: ["left_command", "left_control"],
-					},
-				],
-				type: "basic",
-			},
-		],
-	},
+	// {
+	// 	description: "Super Key (⌃⇧⌘)",
+	// 	manipulators: [
+	// 		{
+	// 			description: "Right Cmd -> Super Key",
+	// 			from: {
+	// 				key_code: "right_shift",
+	// 			},
+	// 			to: [
+	// 				{
+	// 					key_code: "left_shift",
+	// 					modifiers: ["left_command", "left_control"],
+	// 				},
+	// 			],
+	// 			type: "basic",
+	// 		},
+	// 	],
+	// },
 	{
 		description: "Ctrl + Left Click to Left Click",
 		manipulators: [
@@ -95,62 +103,62 @@ const rules: KarabinerRules[] = [
 			},
 		],
 	},
-	{
-		description: "Ctrl + D for Scroll Down",
-		manipulators: [
-			{
-				type: "basic",
-				from: {
-					key_code: "d",
-					modifiers: {
-						mandatory: ["left_control"],
-					},
-				},
-				to: [
-					{
-						key_code: "page_down",
-					},
-				],
-				conditions: [
-					{
-						type: "frontmost_application_if",
-						bundle_identifiers: [
-							"company.thebrowser.Browser",
-							"com.google.Chrome",
-						],
-					},
-				],
-			},
-		],
-	},
-	{
-		description: "Ctrl + U for Scroll Up",
-		manipulators: [
-			{
-				type: "basic",
-				from: {
-					key_code: "u",
-					modifiers: {
-						mandatory: ["left_control"],
-					},
-				},
-				to: [
-					{
-						key_code: "page_up",
-					},
-				],
-				conditions: [
-					{
-						type: "frontmost_application_if",
-						bundle_identifiers: [
-							"company.thebrowser.Browser",
-							"com.google.Chrome",
-						],
-					},
-				],
-			},
-		],
-	},
+	// {
+	// 	description: "Ctrl + D for Scroll Down",
+	// 	manipulators: [
+	// 		{
+	// 			type: "basic",
+	// 			from: {
+	// 				key_code: "d",
+	// 				modifiers: {
+	// 					mandatory: ["left_control"],
+	// 				},
+	// 			},
+	// 			to: [
+	// 				{
+	// 					key_code: "page_down",
+	// 				},
+	// 			],
+	// 			conditions: [
+	// 				{
+	// 					type: "frontmost_application_if",
+	// 					bundle_identifiers: [
+	// 						"company.thebrowser.Browser",
+	// 						"com.google.Chrome",
+	// 					],
+	// 				},
+	// 			],
+	// 		},
+	// 	],
+	// },
+	// {
+	// 	description: "Ctrl + U for Scroll Up",
+	// 	manipulators: [
+	// 		{
+	// 			type: "basic",
+	// 			from: {
+	// 				key_code: "u",
+	// 				modifiers: {
+	// 					mandatory: ["left_control"],
+	// 				},
+	// 			},
+	// 			to: [
+	// 				{
+	// 					key_code: "page_up",
+	// 				},
+	// 			],
+	// 			conditions: [
+	// 				{
+	// 					type: "frontmost_application_if",
+	// 					bundle_identifiers: [
+	// 						"company.thebrowser.Browser",
+	// 						"com.google.Chrome",
+	// 					],
+	// 				},
+	// 			],
+	// 		},
+	// 	],
+	// },
 	{
 		description: "Ctrl + N for Arrow Down",
 		manipulators: [
@@ -173,6 +181,7 @@ const rules: KarabinerRules[] = [
 						bundle_identifiers: [
 							"company.thebrowser.Browser",
 							"com.google.Chrome",
+							"org.godotengine.godot",
 						],
 					},
 				],
@@ -201,20 +210,21 @@ const rules: KarabinerRules[] = [
 						bundle_identifiers: [
 							"company.thebrowser.Browser",
 							"com.google.Chrome",
+							"org.godotengine.godot",
 						],
 					},
 				],
 			},
 		],
 	},
-	// remap("e", ["right_shift"], "open_bracket", null),
-	// remap("r", ["right_shift"], "close_bracket", null),
-	// remap("d", ["right_shift"], "open_bracket", ["left_shift"]),
-	// remap("f", ["right_shift"], "close_bracket", ["left_shift"]),
+	remap("e", ["right_shift"], "open_bracket", null),
+	remap("r", ["right_shift"], "close_bracket", null),
+	remap("d", ["right_shift"], "open_bracket", ["left_shift"]),
+	remap("f", ["right_shift"], "close_bracket", ["left_shift"]),
 	// remap("z", ["right_shift"], "comma", ["left_shift"]),
 	// remap("x", ["right_shift"], "period", ["left_shift"]),
-	// remap("c", ["right_shift"], "9", ["left_shift"]),
-	// remap("v", ["right_shift"], "0", ["left_shift"]),
+	remap("c", ["right_shift"], "9", ["left_shift"]),
+	remap("v", ["right_shift"], "0", ["left_shift"]),
 	// remap("s", ["right_shift"], "equal_sign", null),
 	// remap("g", ["right_shift"], "4", ["left_shift"]),
 	// remap("h", ["right_shift"], "6", ["left_shift"]),
@@ -226,7 +236,8 @@ const rules: KarabinerRules[] = [
 			e: app("Arc"),
 			c: app("iTerm"),
 			f: app("Figma"),
-			v: app("Visual Studio Code"),
+			g: app("Godot_mono"),
+			v: app("Zed"),
 			p: app("Postman"),
 			d: app("Discord"),
 			s: app("Slack"),
@@ -254,6 +265,10 @@ const rules: KarabinerRules[] = [
 			// l: open(
 			// 	"raycast://extensions/stellate/mxstbr-commands/open-mxs-is-shortlink"
 			// ),
+		},
+		g: {
+			p: open("raycast://extensions/raycast/github/search-pull-requests"),
+			k: open("raycast://extensions/raycast/github/search-repositories"),
 		},
 
 		// w = "Window" via rectangle.app

@@ -40,27 +40,6 @@
                         ]
                     },
                     {
-                        "description": "Super Key (⌃⇧⌘)",
-                        "manipulators": [
-                            {
-                                "description": "Right Cmd -> Super Key",
-                                "from": {
-                                    "key_code": "right_shift"
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_shift",
-                                        "modifiers": [
-                                            "left_command",
-                                            "left_control"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Ctrl + Left Click to Left Click",
                         "manipulators": [
                             {
@@ -116,66 +95,6 @@
                                     }
                                 ],
                                 "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Ctrl + D for Scroll Down",
-                        "manipulators": [
-                            {
-                                "type": "basic",
-                                "from": {
-                                    "key_code": "d",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_control"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "page_down"
-                                    }
-                                ],
-                                "conditions": [
-                                    {
-                                        "type": "frontmost_application_if",
-                                        "bundle_identifiers": [
-                                            "company.thebrowser.Browser",
-                                            "com.google.Chrome"
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Ctrl + U for Scroll Up",
-                        "manipulators": [
-                            {
-                                "type": "basic",
-                                "from": {
-                                    "key_code": "u",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_control"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "page_up"
-                                    }
-                                ],
-                                "conditions": [
-                                    {
-                                        "type": "frontmost_application_if",
-                                        "bundle_identifiers": [
-                                            "company.thebrowser.Browser",
-                                            "com.google.Chrome"
-                                        ]
-                                    }
-                                ]
                             }
                         ]
                     },
@@ -240,6 +159,144 @@
                         ]
                     },
                     {
+                        "description": "Remap right_shift + e to open_bracket",
+                        "manipulators": [
+                            {
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "e",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_shift"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "open_bracket"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Remap right_shift + r to close_bracket",
+                        "manipulators": [
+                            {
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "r",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_shift"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "close_bracket"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Remap right_shift + d to left_shift + open_bracket",
+                        "manipulators": [
+                            {
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_shift"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "open_bracket",
+                                        "modifiers": [
+                                            "left_shift"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Remap right_shift + f to left_shift + close_bracket",
+                        "manipulators": [
+                            {
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "f",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_shift"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "close_bracket",
+                                        "modifiers": [
+                                            "left_shift"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Remap right_shift + c to left_shift + 9",
+                        "manipulators": [
+                            {
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "c",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_shift"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "9",
+                                        "modifiers": [
+                                            "left_shift"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Remap right_shift + v to left_shift + 0",
+                        "manipulators": [
+                            {
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "v",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_shift"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "0",
+                                        "modifiers": [
+                                            "left_shift"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
                         "description": "Super Key sublayer \"a\"",
                         "manipulators": [
                             {
@@ -272,6 +329,11 @@
                                     }
                                 ],
                                 "conditions": [
+                                    {
+                                        "type": "variable_if",
+                                        "name": "super_sublayer_g",
+                                        "value": 0
+                                    },
                                     {
                                         "type": "variable_if",
                                         "name": "super_sublayer_s",
@@ -337,6 +399,30 @@
                                 "type": "basic",
                                 "from": {
                                     "key_code": "f",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "conditions": [
+                                    {
+                                        "type": "variable_if",
+                                        "name": "super_sublayer_a",
+                                        "value": 1
+                                    }
+                                ]
+                            },
+                            {
+                                "to": [
+                                    {
+                                        "shell_command": "osascript -e 'tell application \"Unity\" to activate'"
+                                    }
+                                ],
+                                "description": "Open Unity",
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "g",
                                     "modifiers": {
                                         "mandatory": [
                                             "any"
@@ -456,7 +542,7 @@
                                 "description": "Open -a 'World of Warcraft Classic.app'",
                                 "type": "basic",
                                 "from": {
-                                    "key_code": "g",
+                                    "key_code": "u",
                                     "modifiers": {
                                         "mandatory": [
                                             "any"
@@ -690,6 +776,101 @@
                         ]
                     },
                     {
+                        "description": "Super Key sublayer \"g\"",
+                        "manipulators": [
+                            {
+                                "description": "Toggle Super sublayer g",
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "g",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_control",
+                                            "left_shift"
+                                        ]
+                                    }
+                                },
+                                "to_after_key_up": [
+                                    {
+                                        "set_variable": {
+                                            "name": "super_sublayer_g",
+                                            "value": 0
+                                        }
+                                    }
+                                ],
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "super_sublayer_g",
+                                            "value": 1
+                                        }
+                                    }
+                                ],
+                                "conditions": [
+                                    {
+                                        "type": "variable_if",
+                                        "name": "super_sublayer_a",
+                                        "value": 0
+                                    },
+                                    {
+                                        "type": "variable_if",
+                                        "name": "super_sublayer_s",
+                                        "value": 0
+                                    }
+                                ]
+                            },
+                            {
+                                "to": [
+                                    {
+                                        "shell_command": "open raycast://extensions/raycast/github/search-pull-requests"
+                                    }
+                                ],
+                                "description": "Open raycast://extensions/raycast/github/search-pull-requests",
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "p",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "conditions": [
+                                    {
+                                        "type": "variable_if",
+                                        "name": "super_sublayer_g",
+                                        "value": 1
+                                    }
+                                ]
+                            },
+                            {
+                                "to": [
+                                    {
+                                        "shell_command": "open raycast://extensions/raycast/github/search-repositories"
+                                    }
+                                ],
+                                "description": "Open raycast://extensions/raycast/github/search-repositories",
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "k",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "conditions": [
+                                    {
+                                        "type": "variable_if",
+                                        "name": "super_sublayer_g",
+                                        "value": 1
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
                         "description": "Super Key sublayer \"s\"",
                         "manipulators": [
                             {
@@ -725,6 +906,11 @@
                                     {
                                         "type": "variable_if",
                                         "name": "super_sublayer_a",
+                                        "value": 0
+                                    },
+                                    {
+                                        "type": "variable_if",
+                                        "name": "super_sublayer_g",
                                         "value": 0
                                     }
                                 ]
