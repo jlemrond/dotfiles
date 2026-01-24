@@ -26,6 +26,9 @@
 /tmux/plugins
 /tmux/resurrect
 
+# Karabiner
+/karabiner/automatic_backups
+
 .DS_Store
 
 # Node
