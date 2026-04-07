@@ -1,0 +1,153 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+  "terminal": {
+    "dock": "bottom",
+  },
+  "show_edit_predictions": true,
+  "edit_predictions": {
+    "provider": "copilot",
+    "mode": "eager",
+    "copilot": {
+      "proxy": null,
+      "proxy_no_verify": null,
+      "enterprise_uri": null,
+    },
+    "enabled_in_text_threads": false,
+  },
+  "icon_theme": "Material Icon Theme",
+  "agent": {
+    "default_profile": "write",
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-5.3-codex",
+      "enable_thinking": false,
+      "effort": "high",
+    },
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/.jj",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings",
+    "**/*.generated.cs",
+    "**/*.cs.uid",
+    "**/**.*.import",
+  ],
+  "theme": "Catppuccin Macchiato",
+  "vim_mode": true,
+  "ui_font_family": "MonoLisa",
+  "ui_font_size": 18,
+  "buffer_font_size": 18,
+  "buffer_font_family": "MonoLisa",
+  "soft_wrap": "editor_width",
+  "tab_bar": {
+    "show": true,
+  },
+  "close_on_file_delete": true,
+  "tabs": {
+    "activate_on_close": "history",
+  },
+  "preview_tabs": {
+    "enabled": true,
+  },
+  "project_panel": {
+    "git_status_indicator": true,
+  },
+  "languages": {
+    "JSON": {
+      "hard_tabs": true,
+      "tab_size": 4,
+      "formatter": "prettier",
+      "format_on_save": "on",
+    },
+    "JavaScript": {
+      "hard_tabs": true,
+      "tab_size": 4,
+      "formatter": "prettier",
+      "format_on_save": "on",
+    },
+    "TypeScript": {
+      "hard_tabs": true,
+      "tab_size": 4,
+      "formatter": "prettier",
+      "format_on_save": "on",
+    },
+    "TSX": {
+      "hard_tabs": true,
+      "tab_size": 4,
+      "formatter": "prettier",
+      "format_on_save": "on",
+    },
+    "CSharp": {
+      "hard_tabs": true, // C# will use tabs
+      "tab_size": 4, // C# tabs will be 4 spaces wide
+      "formatter": "auto", // Or a specific formatter if desired
+    },
+    "Lua": {
+      "hard_tabs": false,
+      "tab_size": 2,
+      "formatter": "auto",
+    },
+    "Liquid": {
+      "prettier": {
+        "allowed": true,
+        "plugins": [
+          "@shopify/prettier-plugin-liquid",
+          "prettier-plugin-tailwindcss",
+        ],
+      },
+      "language_servers": ["tailwindcss-language-server", "..."],
+    },
+  },
+  "lsp": {
+    "yaml-language-server": {
+      "initialization_options": {
+        "yaml.customTags": [
+          "!And",
+          "!If",
+          "!Not",
+          "!Equals",
+          "!Or",
+          "!FindInMap sequence",
+          "!Base64",
+          "!Cidr",
+          "!Ref",
+          "!Sub",
+          "!GetAtt",
+          "!GetAZs",
+          "!ImportValue",
+          "!Select",
+          "!Select sequence",
+          "!Split",
+          "!Join sequence",
+        ],
+        // Enable/disable default YAML formatter (requires restart)
+        "yaml.format.enable": true,
+      },
+    },
+    "tailwindcss-language-server": {
+      "settings": {
+        "includeLanguages": {
+          "liquid": "html",
+        },
+      },
+    },
+  },
+  "vim": {
+    "use_system_clipboard": "never",
+  },
+}

@@ -16,6 +16,9 @@
 !starship.toml
 !wow
 !wow/**/*
+!zed
+!zed/keymap.json
+!zed/settings.json
 
 ####################### Blacklist #######################
 
