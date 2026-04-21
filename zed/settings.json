@@ -9,6 +9,7 @@
 {
   "terminal": {
     "dock": "bottom",
+    "line_height": "comfortable",
   },
   "show_edit_predictions": true,
   "edit_predictions": {
@@ -19,7 +20,6 @@
       "proxy_no_verify": null,
       "enterprise_uri": null,
     },
-    "enabled_in_text_threads": false,
   },
   "icon_theme": "Material Icon Theme",
   "agent": {
@@ -47,7 +47,7 @@
     "**/*.cs.uid",
     "**/**.*.import",
   ],
-  "theme": "Catppuccin Macchiato",
+  "theme": "One Light",
   "vim_mode": true,
   "ui_font_family": "MonoLisa",
   "ui_font_size": 18,
